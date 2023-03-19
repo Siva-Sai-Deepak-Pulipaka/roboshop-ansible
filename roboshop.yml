@@ -1,4 +1,5 @@
 - name : Run Roboshop
   hosts: all
+  become: true          #adding this line to make it run as root user. its like run with 'sudo'
   roles:
     - "{{ role_name }}"
