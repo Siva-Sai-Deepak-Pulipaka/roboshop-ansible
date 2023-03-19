@@ -1,0 +1,6 @@
+- name : Run Roboshop
+  hosts: all
+  roles:
+    - "{{ role_name }}"
+
+
