@@ -8,7 +8,7 @@
     path: /usr/share/nginx/html/
     state: absent
 
-- name: Creating app directory if it does not exist
+- name: Creating application directory if it does not exist
   ansible.builtin.file:
     path: /usr/share/nginx/html/
     state: directory
