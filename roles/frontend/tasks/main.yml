@@ -22,7 +22,7 @@
 
 - name: Copying nginx configuration file
   ansible.builtin.copy:
-    src: /frontend.conf
+    src: frontend.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
 - name: Enabled and Restarted nginx service
