@@ -7,7 +7,7 @@
   ansible.builtin.dnf:
     name: '@redis:remi-6.2'
     state: installed
-    disable_gpg_check: true
+    
 
 - name: updating listen address from 127.0.01 to 0.0.0.0
   ansible.builtin.replace:
