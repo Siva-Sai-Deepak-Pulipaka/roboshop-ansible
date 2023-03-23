@@ -1,7 +1,5 @@
 - name: Disabling default mysql module
-  ansible.builtin.dnf:
-    name: mysql
-    state: absent
+  ansible.builtin.shell: dnf module disable mysql -y
 
 - name: Copying mysql repo file
   ansible.builtin.copy:
