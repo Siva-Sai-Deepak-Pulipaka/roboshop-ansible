@@ -1,0 +1,26 @@
+
+- name: installing nodejs repo
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Installing nodejs 
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+# here we are using import_task because the task roboshop-app-setup file in the same directory common.
+- name: Importing ROBOSHOP_APP_SETUP task
+  ansible.builtin.import_tasks:
+    file: roboshop-app-setup.yml 
+
+- name: installing nodejs dependencies
+  community.general.npm:
+    path: /app           #node js has to be installed in our app directory.
+
+- name: schema setup 
+  ansible.builtin.import_tasks:
+    file: schema-setup.yml
+  when: schema_type is defined  # here this line indictaes that if we declared a variable schema_type then only this task should be executed.
+
+- name: systemd setup 
+  ansible.builtin.import_tasks:
+    file: systemd-setup.yml

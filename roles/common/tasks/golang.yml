@@ -1,0 +1,18 @@
+
+- name: installing golang
+  ansible.builtin.yum:
+    name: golang
+    state: installed
+
+- name: roboshop-app-setup
+  ansible.builtin.import_tasks:
+    name: roboshop-app-setup.yml
+
+- name: installing golang dependencies
+  ansible.builtin.shell: go mod init dispatch ; go get ; go build
+  args:
+    chdir: /app
+
+- name: SYSTEMD_SETUP
+  ansible.builtin.import_tasks:
+    name: systemd-setup.yml  

@@ -1,0 +1,28 @@
+
+- name: mongodb schema 
+  block:  
+    - name: copying mongo repo
+      ansible.builtin.copy:
+        src: mongodb.repo
+        dest: /etc/yum.repos.d/mongodb.repo
+
+    - name: Installing mongodb client
+      ansible.builtin.yum:
+        name: mongodb-org-shell
+        state: installed
+    
+    - name: connecting to mongo host
+      ansible.builtin.shell: mongo --host mongodb-dev.easydevops.online </app/schema/{{ component }}.js
+  when: schema_type == "mongo"
+
+
+- name: Mysql schema
+  block:
+  - name: installing mysql client
+    ansible.builtin.yum:
+      name: mysql
+      state: installed
+
+  - name: connecting mysql client
+    ansible.builtin.shell: mysql -h mysql-dev.easydevops.online -uroot -pPASS < /app/schema/{{ component }}.sql
+  when: schema_type == "mysql"
