@@ -21,7 +21,7 @@
 
 
 - name: Copying nginx configuration file
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: frontend.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
