@@ -2,7 +2,7 @@
 - name: mongodb schema 
   block:  
     - name: copying mongo repo
-      ansible.builtin.copy:
+      ansible.builtin.template:
         src: mongodb.repo
         dest: /etc/yum.repos.d/mongodb.repo
 
