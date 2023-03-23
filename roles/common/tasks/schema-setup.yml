@@ -12,7 +12,7 @@
         state: installed
     
     - name: connecting to mongo host
-      ansible.builtin.shell: mongo --host mongodb-dev.easydevops.online </app/schema/{{ component }}.js
+      ansible.builtin.shell: mongo --host mongodb-dev.easydevops.online </app/schema/{{component}}.js
   when: schema_type == "mongo"
 
 
@@ -24,5 +24,5 @@
       state: installed
 
   - name: connecting mysql client
-    ansible.builtin.shell: mysql -h mysql-dev.easydevops.online -uroot -pPASS < /app/schema/{{ component }}.sql
+    ansible.builtin.shell: mysql -h mysql-dev.easydevops.online -uroot -pRoboShop@1 < /app/schema/{{component}}.sql
   when: schema_type == "mysql"
