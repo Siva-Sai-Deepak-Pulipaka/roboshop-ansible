@@ -18,4 +18,4 @@
 
 - name: systemd setup
   ansible.builtin.import_tasks:
-    name: systemd-setup.yml
+    file: systemd-setup.yml

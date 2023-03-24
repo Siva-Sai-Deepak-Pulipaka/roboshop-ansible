@@ -1,7 +1,7 @@
 - name: importing nodejs task from common role 
   ansible.builtin.import_role:
     name: common             #role name. we are using roles directory to store individual component directories.
-    import_from: nodejs      #task name. we are using tasks directory to store all the tasks of a particular component
+    tasks_from: nodejs      #task name. we are using tasks directory to store all the tasks of a particular component
 
 # the task nodejs we are trying to access is present in another role common. so we used import role
 

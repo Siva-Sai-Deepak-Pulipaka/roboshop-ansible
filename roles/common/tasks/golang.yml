@@ -6,7 +6,7 @@
 
 - name: roboshop-app-setup
   ansible.builtin.import_tasks:
-    name: roboshop-app-setup.yml
+    file: roboshop-app-setup.yml
 
 - name: installing golang dependencies
   ansible.builtin.shell: go mod init dispatch ; go get ; go build
@@ -15,4 +15,4 @@
 
 - name: SYSTEMD_SETUP
   ansible.builtin.import_tasks:
-    name: systemd-setup.yml  
+    file: systemd-setup.yml  
