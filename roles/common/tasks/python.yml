@@ -1,4 +1,3 @@
-
 - name: installing python
   ansible.builtin.yum:
     name:
@@ -9,7 +8,7 @@
 
 - name: ROBOSHOP_APP_SETUP
   ansible.builtin.import_tasks:
-    name: roboshop-app-setup.yml
+    file: roboshop-app-setup.yml
 
 - name: installing python dependencies 
   ansible.builtin.pip:
