@@ -13,8 +13,9 @@
     file: roboshop-app-setup.yml 
 
 - name: installing nodejs dependencies
-  community.general.npm:
-    path: /app           #node js has to be installed in our app directory.
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app  #node js has to be installed in our app directory.
 
 
 - name: schema setup 
