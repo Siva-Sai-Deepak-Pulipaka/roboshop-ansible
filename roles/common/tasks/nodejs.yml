@@ -17,12 +17,14 @@
     path: /app           #node js has to be installed in our app directory.
 
 
-- name: systemd setup 
-  ansible.builtin.import_tasks:
-    file: systemd-setup.yml
-
 - name: schema setup 
   ansible.builtin.import_tasks:
     file: schema-setup.yml
   when: schema_type is defined  # here this line indictaes that if we declared a variable schema_type then only this task should be executed.
+
+- name: systemd setup 
+  ansible.builtin.import_tasks:
+    file: systemd-setup.yml
+
+
 
