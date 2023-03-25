@@ -1,5 +1,6 @@
 
 - name: mongodb schema 
+  when: schema_type == "mongo"
   block:  
     - name: copying mongo repo
       ansible.builtin.copy:
@@ -13,7 +14,7 @@
     
     - name: connecting to mongo host
       ansible.builtin.shell: mongo --host mongodb-dev.easydevops.online </app/schema/{{component}}.js
-  when: schema_type == "mongo"
+  
 
 
 - name: Mysql schema
