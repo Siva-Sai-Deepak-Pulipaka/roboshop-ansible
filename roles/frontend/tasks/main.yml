@@ -22,8 +22,8 @@
 
 - name: Copying nginx configuration file
   ansible.builtin.template:
-    src: frontend.conf
-    dest: /etc/nginx/default.d/frontend.conf
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
 
 - name: Enabled and Restarted nginx service
   ansible.builtin.systemd:
