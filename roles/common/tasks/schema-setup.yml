@@ -12,7 +12,7 @@
         name: mongodb-org-shell
         state: installed
     
-    - name: connecting to mongo host
+    - name: connecting to mongo host to load schema
       ansible.builtin.shell: mongo --host mongodb-dev.easydevops.online </app/schema/{{component}}.js
   
 
