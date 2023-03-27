@@ -1,0 +1,9 @@
+- name: Importing server file
+  ansible.builtin.tasks_from:
+    file: server.yml
+  when: prometheus_server  #checks whether the variabke is true or false
+
+- name: Importing node exporter file
+  ansible.builtin.tasks_from:
+    file: exporter.yml
+  when: node_exporter 

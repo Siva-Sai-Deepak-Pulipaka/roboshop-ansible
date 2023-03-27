@@ -1,0 +1,8 @@
+# this file is declared for accessing meta directory. as in meta directory we declared common role so it first loads common role. in common role ansible will only deals with main.yml so we are giving that file name here.
+- name: setting hostname for our linux page
+  ansible.builtin.shell: set-hostname {{component}}
+
+- name: installing node exporter
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: exporter

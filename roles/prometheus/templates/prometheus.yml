@@ -1,0 +1,34 @@
+# my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  - job_name: 'roboshop-nodes-for-sd'
+    ec2_sd_configs:
+      - region: us-east-1
+        port: 9100
+        filters:
+          - name: "tag:Monitor"     # we are giving tag name as monitor and value is yes. so the instances who have tags Monitor and value is yes then they will only get monitored. tag keyword is mandatory to declare as a part of aws documentation
+            values: ["yes"]
+    
+    relabel_configs:                #this relabel configs can ber used to add additional meta data so in our case prometheus collected data have only ip. so we are with the help of relabel_configs adding component name as well. 
+    - source_labels: [__meta_ec2_tag_Name]    #this meta_ec2 tag is copied from ec2 sd prometeus           
+      target_label: name
+  
+    
