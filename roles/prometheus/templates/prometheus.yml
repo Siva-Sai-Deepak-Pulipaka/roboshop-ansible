@@ -26,7 +26,6 @@ scrape_configs:
         filters:
           - name: "tag:Monitor"     # we are giving tag name as monitor and value is yes. so the instances who have tags Monitor and value is yes then they will only get monitored. tag keyword is mandatory to declare as a part of aws documentation
             values: ["yes"]
-    
     relabel_configs:                #this relabel configs can ber used to add additional meta data so in our case prometheus collected data have only ip. so we are with the help of relabel_configs adding component name as well. 
     - source_labels: [__meta_ec2_tag_Name]    #this meta_ec2 tag is copied from ec2 sd prometeus           
       target_label: name
