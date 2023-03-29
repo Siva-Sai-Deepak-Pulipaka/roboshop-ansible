@@ -5,8 +5,8 @@
 
 - name: updating alerts configuration file
   ansible.builtin.template:
-    src: alerts.yml
-    dest: /opt/prometheus/{{item}}.yml
+    src: {{item}}
+    dest: /opt/prometheus/{{item}}
     loop: "{{alert_files}}"
 
 - name: restarting prometheus server
