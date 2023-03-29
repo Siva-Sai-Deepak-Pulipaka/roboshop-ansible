@@ -1,0 +1,20 @@
+groups:
+- name: Roboshop
+  rules:
+# alert rule for server up or down  
+  - alert: Server Down
+    expr: up < 1             # in expr: we need to mention the query we run in prometheus/grafana
+    for: 30s
+    labels:
+      severity: critical
+    annotations:
+      summary: server Down
+
+# alert rule for high cpu utilization 
+  - alert: High cpu usage
+    expr: 100 - avg by (name)(rate(node_cpu_seconds_total{mode="idle"}[1m]) * 100) > 80
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: High load on cpu

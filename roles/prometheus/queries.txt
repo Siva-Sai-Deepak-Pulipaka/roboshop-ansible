@@ -1,0 +1,17 @@
+servr up
+up
+
+cpu utilization %
+100 - avg by (name)(rate(node_cpu_seconds_total{mode="idle"}[1m]) * 100)
+
+memory 
+100 - (node_memory_Cached_bytes+node_memory_Buffers_bytes+node_memory_MemFree_bytes)/ node_memory_MemTotal_bytes * 100
+
+systemd
+node_systemd_unit_state{exported_name="cart.service",  state="active"}
+node_systemd_unit_state{exported_name="catalogue.service",  state="active"}
+node_systemd_unit_state{exported_name="user.service",  state="active"}
+node_systemd_unit_state{exported_name="frontend.service",  state="active"}
+node_systemd_unit_state{exported_name="dispatch.service",  state="active"}
+node_systemd_unit_state{exported_name="shipping.service",  state="active"}
+node_systemd_unit_state{exported_name="payment.service",  state="active"}
