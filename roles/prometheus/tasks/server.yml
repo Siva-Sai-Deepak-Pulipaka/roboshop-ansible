@@ -9,11 +9,12 @@
     dest: /opt/prometheus/{{ item }}
   loop: "{{ alert_files }}"
 
-- name: prometeus service is started
-  ansible.builtin.shell: netstat -lntp | grep 9090
 
 - name: restarting prometheus server
   ansible.builtin.systemd:
     name: prometheus
     state: restarted
     daemon-reload: true
+
+- name: prometeus service is started
+  ansible.builtin.shell: netstat -lntp | grep 9090
