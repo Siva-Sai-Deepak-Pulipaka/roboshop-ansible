@@ -3,6 +3,7 @@ groups:
   rules:
 # alert rule for service - cart.service  
   {% for component in components %}
+  
   - alert: Service Down alert
     expr: node_systemd_unit_state{exported_name="{{ component }}.service",  state="active"} < 1            # in expr: we need to mention the query we run in prometheus/grafana
     for: 30s
