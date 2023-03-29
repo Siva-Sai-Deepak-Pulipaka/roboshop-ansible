@@ -1,5 +1,5 @@
 # this is a least precedence directory. Actually ansible will throw error if any variable is not declared in ansible then it will definitely throws you an error. so we are declaring variable in defaults directory. However we can override by providing them in command line
-prometheus_server: false 
+prometheus_server: true 
 node_exporter: false
 exporter_url: https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz
 exporter_dir: "{{ exporter_url | split('/') | last | regex_replace('.tar.gz', '')}}"
