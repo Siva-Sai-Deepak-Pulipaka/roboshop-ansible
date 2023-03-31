@@ -1,2 +1,2 @@
-elk: false
+elk: true
 log_file: /var/log/nginx/access.log
