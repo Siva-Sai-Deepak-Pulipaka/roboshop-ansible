@@ -18,3 +18,18 @@
 
 - name: prometeus service is started
   ansible.builtin.shell: netstat -lntp | grep 9090
+
+- name: Updating Alertmanager configuration
+  ansible.builtin.template:
+    src: alertmanager.yml
+    dest: /opt/alertmanager/alertmanager.yml
+
+
+- name: restarting alertmanager server
+  ansible.builtin.systemd:
+    name: alertmanager
+    state: restarted
+    daemon-reload: true
+
+- name: prometeus service is started
+  ansible.builtin.shell: netstat -lntp | grep 9093
