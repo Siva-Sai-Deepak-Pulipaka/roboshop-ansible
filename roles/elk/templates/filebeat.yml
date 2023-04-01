@@ -1,4 +1,4 @@
-copy from /etc/filebeat/filebeat.yml and done modifications
+# copy from /etc/filebeat/filebeat.yml and done modifications
 ###################### Filebeat Configuration Example #########################
 
 # This file is an example configuration file highlighting only the most common
