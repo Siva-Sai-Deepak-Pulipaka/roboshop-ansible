@@ -1,17 +1,23 @@
 
-- name: installing maven
+# - name: installing maven
+#   ansible.builtin.yum:
+#     name: maven
+#     state: installed
+
+- name: installing java
   ansible.builtin.yum:
-    name: maven
+    name: java-17-openjdk
     state: installed
+
 
 - name: roboshop app setup 
   ansible.builtin.import_tasks:
     file: roboshop-app-setup.yml
 
-- name: downloading packages and dependencies
-  ansible.builtin.shell: mvn clean package ; mv target/{{component}}-1.0.jar {{component}}.jar
-  args: 
-    chdir: /app
+# - name: downloading packages and dependencies
+#   ansible.builtin.shell: mvn clean package ; mv target/{{component}}-1.0.jar {{component}}.jar
+#   args: 
+#     chdir: /app
 #we have to install maven dependencies on app directory so we used args attribute
 
 - name: schema setup
