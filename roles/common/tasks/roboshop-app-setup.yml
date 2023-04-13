@@ -12,9 +12,16 @@
     path: /app
     state: directory
 
+#  This is downloading from amazon so we need to replace this with our nexux
+# - name: downloading and extracting {{ component }} contents
+#   ansible.builtin.unarchive:
+#     src: https://roboshop-artifacts.s3.amazonaws.com/{{component}}.zip
+#     dest: /app
+#     remote_src: yes
+
+# downloading from nexus
 - name: downloading and extracting {{ component }} contents
   ansible.builtin.unarchive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/{{component}}.zip
+    src: http://{{ lookup('amazon.aws.aws_ssm', '{{env}}.nexus.user', region='us-east-1') }}:{{ lookup('amazon.aws.aws_ssm', '{{env}}.nexus.pass', region='us-east-1') }}@nexus.easydevops.online:8081/repository/{{component}}/{{component}}-{{app_version}}.zip
     dest: /app
     remote_src: yes
-
