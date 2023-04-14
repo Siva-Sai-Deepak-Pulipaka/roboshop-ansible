@@ -13,11 +13,11 @@
     path: /usr/share/nginx/html/
     state: directory
 
-- name: downloading frontend component
-  ansible.builtin.unarchive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip 
-    dest: /usr/share/nginx/html
-    remote_src: yes
+# - name: downloading frontend component
+#   ansible.builtin.unarchive:
+#     src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip 
+#     dest: /usr/share/nginx/html
+#     remote_src: yes
 
 - name: Copying customized nginx configuration file
   ansible.builtin.template:
