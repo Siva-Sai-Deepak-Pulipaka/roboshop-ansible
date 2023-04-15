@@ -1,2 +1,2 @@
 filebeat: false
-elk: true
+elk: false
