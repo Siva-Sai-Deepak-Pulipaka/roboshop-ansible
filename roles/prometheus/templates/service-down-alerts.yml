@@ -5,11 +5,11 @@ groups:
   {% for component in components %}
   
   - alert: Service Down alert
-    expr: node_systemd_unit_state{exported_name="{{ component }}.service",  state="active"} < 1            # in expr: we need to mention the query we run in prometheus/grafana
+    expr: node_systemd_unit_state{exported_name="{{ component }}.service_name",  state="active"} < 1            # in expr: we need to mention the query we run in prometheus/grafana
     for: 30s
     labels:
       severity: critical
-      appName: {{ component }}     #just adding more notations
+      appName: {{ component.name }}     #just adding more notations
     annotations:
-      summary: service Down on cart service
+      summary: service Down on {{component.name}} service
   {% endfor %}
